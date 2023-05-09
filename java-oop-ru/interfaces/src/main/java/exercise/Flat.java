@@ -2,11 +2,11 @@ package exercise;
 
 // BEGIN
 public class Flat implements Home {
-    public double area();
-    public double balconyArea();
-    public int floor();
+    public double area;
+    public double balconyArea;
+    public int floor;
 
-    public Flat(Double area, Double balconyArea, Integer floor) {
+    public Flat(double area, double balconyArea, int floor) {
         this.area = area;
         this.balconyArea = balconyArea;
         this.floor = floor;
@@ -18,30 +18,31 @@ public class Flat implements Home {
     //    return area;
    // }
 
-    public Double getBalconyArea() {
+    public double getBalconyArea() {
         return balconyArea;
     }
 
-    public Integer getFloor() {
+    public int getFloor() {
         return floor;
     }
-    public Double getArea() {
-        return area + balconyArea;
+    @Override
+    public double getArea() {
+        return this.area + this.balconyArea;
     }
-
-    public Integer compareTo(Home another) {
-        if (getArea() > another.getArea()) {
+    @Override
+    public int compareTo(Home home) {
+        if (home.getArea() < this.getArea()) {
             return 1;
+        }
+        if (home.getArea() > this.getArea()) {
+            return -1;
         }
         else {
             return 0;
         }
     }
-
-    public void toString() {
-        System.out.println("Квартира площадью %s метров на %d этаже");
+    public String toString() {
+        return "Квартира площадью " + this.getArea() + " метров на " + this.getFloor() + " этаже";
     }
-
-
 }
 // END

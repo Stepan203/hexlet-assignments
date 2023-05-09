@@ -2,22 +2,21 @@ package exercise;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.ListIterator;
 
 // BEGIN
 public class App {
-    public int num;
-    public Home apartments;
-
-    public App(Home apartments, Integer num) {
-        this.apartments = apartments;
-        this.num = num;
-       // this.buildApartmentsList = buildApartmentsList;
-    }
-    public App() {
-    }
-
-    void buildApartmentsList(List Home, Integer num) {
-        System.out.println("Квартира площадью %s метров на %s этаже");
+    public static List<String> buildApartmentsList(List<Home> home, int num) {
+        List<String> listHome = new ArrayList<>();
+        if (home.isEmpty()) {
+            return listHome;
+        }
+        home.sort((n1, n2) -> n1.compareTo(n2));
+        for (var i = 0; i < num; i++) {
+            listHome.add(home.get(i).toString());
+        }
+        return listHome;
     }
 }
 // END
