@@ -14,7 +14,7 @@ public class App implements KeyValueStorage {
         Map<String, String> swapMap = storage.toMap();
         System.out.println(storage);
        // for(var entry : toMap.entrySet()) {
-        for(Map.Entry<String, String> entry : swapMap.entrySet()) {
+        for (Map.Entry<String, String> entry : swapMap.entrySet()) {
             swapMap.put(entry.getValue(), entry.getKey());
         }
         return swapMap;
