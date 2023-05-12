@@ -2,15 +2,15 @@ package exercise;
 
 import java.util.Map;
 import java.util.HashMap;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.*;
+//import java.util.Map.Entry;
+//import java.util.Set;
+//import java.util.*;
 
 // BEGIN
 public class App implements KeyValueStorage {
     public Map<String, String> dict;
 
-    public static Map<String, String> swapKeyValue (KeyValueStorage storage) {
+    public static Map<String, String> swapKeyValue(KeyValueStorage storage) {
         Map<String, String> swapMap = storage.toMap();
         System.out.println(storage);
        // for(var entry : toMap.entrySet()) {
