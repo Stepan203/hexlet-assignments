@@ -6,12 +6,12 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 // BEGIN
-public class App implements KeyValueStorage {
-    public static Map<String, String> swapKeyValue(Map<String, String> oldMap) {
+public class App {
+    public static Map<String, String> swapKeyValue (KeyValueStorage storage) {
         Map<String, String> swapMap = new HashMap<>();
-        for (String key : oldMap.keySet()) {
+        for (String key : KeyValueStorage.entrySet()) {
       //  for(Map.Entry<String, String> entry : oldMap.entrySet()) {
-            swapMap.put(oldMap.get(key), key);
+            swapMap.put(key.getValue(), key.getKey());
         }
         return swapMap;
     }

@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.HashMap;
 
 
-class InMemoryKVTest {
+class InMemoryKVTest implements KeyValueStorage {
 
     @Test
     void inMemoryKVTest() {
