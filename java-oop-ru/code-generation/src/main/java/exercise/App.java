@@ -26,7 +26,7 @@ class App {
     public static void extract(Path path) {
         try {
             String json = Files.readString(path);
-            return Car.unserialize();
+            return Car.unserialize(json);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
