@@ -5,16 +5,21 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.RequiredArgsConstructor;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import lombok.Setter;
 import java.io.StringWriter;
-import java.io.StringReader;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import java.io.IOException;
 //import lombok.JsonAutoDetect;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 // BEGIN
 @Getter
-@Setter
-@RequiredArgsConstructor
-//@JsonAutoDetect
+//@Setter
+//@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 // END
 class Car {
     int id;
@@ -24,21 +29,30 @@ class Car {
     User owner;
 
     // BEGIN
-    public static String serialize() {
+    public String serialize() {
         ObjectMapper mapper = new ObjectMapper();
-        StringWriter writer = new StringWriter();
-        String json = mapper.writeValueAsString(Car.class);
+        try {
+            StringWriter writer = new StringWriter();
+            return mapper.writeValueAsString(this);
 
-        //mapper.writeValue(writer, );
-        //String result = writer.toString();
-        return json;
+            //mapper.writeValue(writer, );
+            //String result = writer.toString();
+           // return json;
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
     }
+
     public static Car unserialize(String json) {
-        String jsonString = str;
-        StringReader reader = new StringReader(jsonString);
         ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(json, Car.class);
-        //return car;
+        try {
+            // String jsonString = str;
+            // StringReader reader = new StringReader(jsonString);
+            return mapper.readValue(json, Car.class);
+            //return car;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
     // END
 }
