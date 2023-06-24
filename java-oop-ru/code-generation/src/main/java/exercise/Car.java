@@ -33,12 +33,12 @@ class Car {
         //String result = writer.toString();
         return json;
     }
-    public static Car unserialize(String str) {
+    public static Car unserialize(String json) {
         String jsonString = str;
         StringReader reader = new StringReader(jsonString);
         ObjectMapper mapper = new ObjectMapper();
-        Car car = mapper.readValue(reader, Car.class);
-        return car;
+        return mapper.readValue(json, Car.class);
+        //return car;
     }
     // END
 }
